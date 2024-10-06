@@ -37,11 +37,11 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
      try {
           const { id } = req.params;
-          const { rasm, nomi, malumoti, soni, narxi } = req.body;
+          const { rasm, nomi, malumoti, turi, soni, narxi  } = req.body;
 
           const updatedProduct = await InstrumentSchema.findByIdAndUpdate(
                id,
-               { rasm, nomi,malumoti, soni, narxi, },
+               { rasm, nomi, malumoti, turi,soni, narxi},
                { new: true } // Вернуть обновленный документ
           );
 
