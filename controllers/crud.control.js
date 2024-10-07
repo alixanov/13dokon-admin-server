@@ -55,6 +55,19 @@ const updateProduct = async (req, res) => {
      }
 };
 
+// Получение одного продукта по ID
+const getOneProduct = async (req, res) => {
+     try {
+          console.log(req.params.id); // Выводим ID для проверки
+          const product = await InstrumentSchema.findById(req.params.id);
+          if (!product) {
+               return res.status(404).json({ message: "Продукт не найден" });
+          }
+          res.status(200).json(product);
+     } catch (error) {
+          res.status(500).json({ message: "Ошибка при получении продукта", error });
+     }
+};
 
 
-module.exports = { addProduct, getAllProduct, deleteProduct, updateProduct }
+module.exports = { addProduct, getAllProduct, deleteProduct, updateProduct, getOneProduct }
